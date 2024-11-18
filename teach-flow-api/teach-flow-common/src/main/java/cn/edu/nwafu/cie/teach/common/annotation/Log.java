@@ -1,6 +1,6 @@
 package cn.edu.nwafu.cie.teach.common.annotation;
 
-import cn.edu.nwafu.cie.teach.common.constant.BusinessTypeConstant;
+import cn.edu.nwafu.cie.teach.common.constant.BusinessTypeConstants;
 
 /**
  * 日志注解。
@@ -17,5 +17,5 @@ public @interface Log {
     /**
      * 功能
      */
-    public BusinessTypeConstant businessType() default BusinessTypeConstant.OTHER;
+    public BusinessTypeConstants businessType() default BusinessTypeConstants.OTHER;
 }

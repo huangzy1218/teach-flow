@@ -6,7 +6,7 @@ package cn.edu.nwafu.cie.teach.common.constant;
  * @author Huang Z.Y.
  * @create 2024-11-17 23:13
  */
-public enum BusinessTypeConstant {
+public enum BusinessTypeConstants {
     /**
      * 其它
      */
