@@ -2,8 +2,11 @@ package cn.edu.nwafu.cie.teach.common.util;
 
 import cn.edu.nwafu.cie.teach.common.constant.SystemConstants;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.util.CollectionUtils;
 
+import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -248,6 +251,127 @@ public class RedisUtils {
         key = redisPrefix + key;
         redisTemplate.expire(key, second, TimeUnit.SECONDS);
     }
+
+    /**
+     * 指定缓存失效时间
+     *
+     * @param key         键
+     * @param millisecond 时间(毫秒)
+     */
+    public static void pExpire(String key, Long millisecond) {
+        key = redisPrefix + key;
+        redisTemplate.expire(key, millisecond, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * 指定缓存永久有效
+     *
+     * @param key 键
+     */
+    public static void persist(String key) {
+        key = redisPrefix + key;
+        redisTemplate.persist(key);
+    }
+
+    /**
+     * 根据 key 获取过期时间
+     *
+     * @param key 键不能 为null
+     * @return 返回0代表为永久有效(秒)
+     */
+    public static Long ttl(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+    }
+
+    public static Long ttlWithoutPrefix(String key) {
+        return redisTemplate.getExpire(key, TimeUnit.SECONDS);
+    }
+
+    /**
+     * 根据 key 获取过期时间
+     *
+     * @param key 键不能为 null
+     * @return 返回 0 代表为永久有效(毫秒)
+     */
+    public static Long pTtl(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.getExpire(key, TimeUnit.MILLISECONDS);
+    }
+
+    /**
+     * 判断 key 是否存在
+     *
+     * @param key 键
+     * @return true=存在,false=不存在
+     */
+    public static Boolean exists(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.hasKey(key);
+    }
+
+    /**
+     * 删除 1 个或多个键
+     *
+     * @param key 键 (一个或多个)
+     */
+    @SuppressWarnings("unchecked")
+    public static void del(String... key) {
+        if (key.length == 1) {
+            key[0] = redisPrefix + key[0];
+            redisTemplate.delete(key[0]);
+        } else {
+            for (int i = 0; key.length > i; i++) {
+                key[i] = redisPrefix + key[i];
+            }
+            redisTemplate.delete((Collection<String>) CollectionUtils.arrayToList(key));
+        }
+    }
+
+    /**
+     * 给key赋值一个新的 key 名
+     *
+     * @param oldKey 旧的 key
+     * @param newKey 新的 key
+     */
+    public static void rename(String oldKey, String newKey) {
+        oldKey = redisPrefix + oldKey;
+        newKey = redisPrefix + newKey;
+        redisTemplate.rename(oldKey, newKey);
+    }
+
+    /**
+     * 将当前数据库的key移动到给定的数据库 db 当中
+     *
+     * @param key 键
+     * @param db  库
+     * @return Boolean
+     */
+    public static Boolean move(String key, int db) {
+        key = redisPrefix + key;
+        return redisTemplate.move(key, db);
+    }
+
+    /**
+     * 获取匹配的 key 值
+     *
+     * @param pattern 通配符(*, ?, [])
+     * @return Set
+     */
+    public static Set<String> keys(String pattern) {
+        return redisTemplate.keys(pattern);
+    }
+
+    /**
+     * 随机返回一个 key
+     *
+     * @return String
+     */
+    public static String randomKey() {
+        return redisTemplate.randomKey();
+    }
+
+    /* ***************** common end *************** */
 
     /* ***************** Map end *************** */
 }
