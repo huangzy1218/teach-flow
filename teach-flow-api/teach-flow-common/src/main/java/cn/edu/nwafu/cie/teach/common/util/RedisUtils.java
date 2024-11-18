@@ -1,10 +1,15 @@
 package cn.edu.nwafu.cie.teach.common.util;
 
 import cn.edu.nwafu.cie.teach.common.constant.SystemConstants;
+import org.springframework.data.redis.connection.RedisConnection;
+import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ScanOptions;
+import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
@@ -241,6 +246,8 @@ public class RedisUtils {
         return redisTemplate.opsForHash().increment(key, item, -by);
     }
 
+    /* ***************** Map end *************** */
+
     /**
      * 指定缓存失效时间
      *
@@ -371,8 +378,118 @@ public class RedisUtils {
         return redisTemplate.randomKey();
     }
 
+    /**
+     * 对象句柄
+     *
+     * @return RedisTemplate
+     */
+    public static RedisTemplate<String, Object> handler() {
+        return redisTemplate;
+    }
+
     /* ***************** common end *************** */
 
-    /* ***************** Map end *************** */
+    /**
+     * 按匹配获取或有KEY
+     *
+     * @param pattern 规则
+     * @return Set<String>
+     */
+    public static Set<String> matchSet(String pattern) {
+        Set<String> keys = new LinkedHashSet<>();
+        RedisUtils.handler()
+                .execute(
+                        (RedisConnection connection) -> {
+                            try (Cursor<byte[]> cursor =
+                                         connection.scan(
+                                                 ScanOptions.scanOptions()
+                                                         .count(Long.MAX_VALUE)
+                                                         .match(pattern)
+                                                         .build())) {
+                                cursor.forEachRemaining(
+                                        item -> {
+                                            keys.add(RedisSerializer.string().deserialize(item));
+                                        });
+                                return null;
+                            } catch (Exception e) {
+                                throw new RuntimeException(e);
+                            }
+                        });
+
+        return keys;
+    }
+
+    /**
+     * 根据 key 获取 Set 中的所有值
+     *
+     * @param key 键
+     * @return Set
+     */
+    public static Set<Object> sGet(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().members(key);
+    }
+
+    /**
+     * 根据 value 从一个 set 中查询，是否存在
+     *
+     * @param key   键
+     * @param value 值
+     * @return true 存在 false不存在
+     */
+    public Boolean sHasKey(String key, Object value) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().isMember(key, value);
+    }
+
+    /**
+     * 将数据放入 set 缓存
+     *
+     * @param key    键
+     * @param values 值 可以是多个
+     * @return 成功个数
+     */
+    public static Long sSet(String key, Object... values) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().add(key, values);
+    }
+
+    /**
+     * 将 set 数据放入缓存
+     *
+     * @param key    键
+     * @param time   时间(秒)
+     * @param values 值 可以是多个
+     * @return 成功个数
+     */
+    public Long sSetAndTime(String key, long time, Object... values) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().add(key, values);
+    }
+
+    /**
+     * 获取 set 缓存的长度
+     *
+     * @param key 键
+     * @return Long
+     */
+    public Long sGetSetSize(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().size(key);
+    }
+
+    /**
+     * 移除值为 value 的元素
+     *
+     * @param key    键
+     * @param values 值 可以是多个
+     * @return 移除的个数
+     */
+    public Long setRemove(String key, Object... values) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForSet().remove(key, values);
+    }
+
+    /* ***************** Set end *************** */
 }
     
