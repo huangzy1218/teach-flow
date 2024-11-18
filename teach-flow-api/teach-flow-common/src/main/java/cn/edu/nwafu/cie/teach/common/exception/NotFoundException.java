@@ -1,28 +1,29 @@
 package cn.edu.nwafu.cie.teach.common.exception;
 
 /**
- * 自定义异常类，用于表示特定的限流异常。
+ * 自定义异常类，用于表示资源未找到。
  *
  * @author Huang Z.Y.
- * @create 2024-11-17 23:35
+ * @create 2024-11-18 22:56
  */
-public class LimitException extends RuntimeException {
-    public LimitException() {
+public class NotFoundException extends RuntimeException {
+    public NotFoundException() {
+        super();
     }
 
-    public LimitException(String message) {
+    public NotFoundException(String message) {
         super(message);
     }
 
-    public LimitException(String message, Throwable cause) {
+    public NotFoundException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public LimitException(Throwable cause) {
+    public NotFoundException(Throwable cause) {
         super(cause);
     }
 
-    public LimitException(
+    protected NotFoundException(
             String message,
             Throwable cause,
             boolean enableSuppression,
