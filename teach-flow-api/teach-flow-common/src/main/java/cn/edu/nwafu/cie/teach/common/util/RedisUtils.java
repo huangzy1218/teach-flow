@@ -8,10 +8,7 @@ import org.springframework.data.redis.core.ScanOptions;
 import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Collection;
-import java.util.LinkedHashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -491,5 +488,129 @@ public class RedisUtils {
     }
 
     /* ***************** Set end *************** */
+
+    /**
+     * 获取 list 缓存的内容
+     *
+     * @param key   键
+     * @param start 开始
+     * @param end   结束 0 到 -1代表所有值
+     * @return List
+     */
+    public List<Object> lGet(String key, long start, long end) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForList().range(key, start, end);
+    }
+
+    /**
+     * 获取 list 缓存的长度
+     *
+     * @param key 键
+     * @return Long
+     */
+    public Long lGetListSize(String key) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForList().size(key);
+    }
+
+    /**
+     * 通过索引获取 list 中的值
+     *
+     * @param key   键
+     * @param index 索引 index>=0 时,0 表头，1 第二个元素,依次类推;index < 0时,-1,表尾,-2倒数第二个元素，依次类推
+     * @return Object
+     */
+    public Object lGetIndex(String key, long index) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForList().index(key, index);
+    }
+
+    /**
+     * 将 list 放入缓存
+     *
+     * @param key   键
+     * @param value 值
+     * @return boolean
+     */
+    public boolean lSet(String key, Object value) {
+        key = redisPrefix + key;
+        redisTemplate.opsForList().rightPush(key, value);
+        return true;
+    }
+
+    /**
+     * 将 list 放入缓存
+     *
+     * @param key    键
+     * @param value  值
+     * @param second 时间(秒)
+     * @return boolean
+     */
+    public boolean lSet(String key, Object value, long second) {
+        key = redisPrefix + key;
+        redisTemplate.opsForList().rightPush(key, value);
+        if (second > 0) {
+            expire(key, second);
+        }
+        return true;
+    }
+
+    /**
+     * 将 list 放入缓存
+     *
+     * @param key   键
+     * @param value 值
+     * @return boolean
+     */
+    public boolean lSet(String key, List<Object> value) {
+        key = redisPrefix + key;
+        redisTemplate.opsForList().rightPushAll(key, value);
+        return true;
+    }
+
+    /**
+     * 将 list 放入缓存
+     *
+     * @param key   键
+     * @param value 值
+     * @param time  时间(秒)
+     * @return boolean
+     */
+    public boolean lSet(String key, List<Object> value, Long time) {
+        key = redisPrefix + key;
+        redisTemplate.opsForList().rightPushAll(key, value);
+        if (time > 0) {
+            expire(key, time);
+        }
+        return true;
+    }
+
+    /**
+     * 根据索引修改 list 中的某条数据
+     *
+     * @param key   键
+     * @param index 索引
+     * @param value 值
+     * @return boolean
+     */
+    public boolean lUpdateIndex(String key, Long index, Object value) {
+        key = redisPrefix + key;
+        redisTemplate.opsForList().set(key, index, value);
+        return true;
+    }
+
+    /**
+     * 移除 N 个值为 value
+     *
+     * @param key   键
+     * @param count 移除多少个
+     * @param value 值
+     * @return 移除的个数
+     */
+    public Long lRemove(String key, Long count, Object value) {
+        key = redisPrefix + key;
+        return redisTemplate.opsForList().remove(key, count, value);
+    }
+    /* ***************** list end *************** */
 }
     
