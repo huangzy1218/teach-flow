@@ -18,6 +18,7 @@
         <module>teach-flow-search</module>
         <module>teach-flow-demo</module>
         <module>teach-flow-interface</module>
+        <module>teach-flow-user</module>
     </modules>
 
     <properties>
