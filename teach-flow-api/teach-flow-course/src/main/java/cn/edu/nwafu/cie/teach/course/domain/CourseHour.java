@@ -13,17 +13,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 课程附件。
+ * 课时。
  *
  * @author Huang Z.Y.
- * @create 2024-11-23 22:32
+ * @create 2024-11-23 23:06
  */
-@TableName(value = "course_attachment")
+@TableName(value = "course_hour")
 @Data
-public class CourseAttachment implements Serializable {
-    @Serial
+public class CourseHour implements Serializable {
     @TableField(exist = false)
-    private static final long serialVersionUID = -354675770769700687L;
+    @Serial
+    private static final long serialVersionUID = -5218072063342998381L;
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -35,17 +35,23 @@ public class CourseAttachment implements Serializable {
     private Integer courseId;
 
     /**
+     * 章节 ID
+     */
+    @JsonProperty("chapter_id")
+    private Integer chapterId;
+
+    /**
      * 升序
      */
     private Integer sort;
 
     /**
-     * 附件名
+     * 课时名
      */
     private String title;
 
     /**
-     * 类型
+     * 课时类型
      */
     private String type;
 
@@ -55,16 +61,9 @@ public class CourseAttachment implements Serializable {
     private Integer rid;
 
     /**
-     * 资源 URL
+     * 时长[s]
      */
-    @TableField(exist = false)
-    private String url;
-
-    /**
-     * 资源类型
-     */
-    @TableField(exist = false)
-    private String ext;
+    private Integer duration;
 
     /**
      * 创建时间

@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
@@ -13,17 +12,17 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 课程附件。
+ * 课程章节。
  *
  * @author Huang Z.Y.
- * @create 2024-11-23 22:32
+ * @create 2024-11-23 22:57
  */
-@TableName(value = "course_attachment")
+@TableName(value = "course_chapters")
 @Data
-public class CourseAttachment implements Serializable {
+public class CourseChapter implements Serializable {
     @Serial
     @TableField(exist = false)
-    private static final long serialVersionUID = -354675770769700687L;
+    private static final long serialVersionUID = -5883669980962166551L;
 
     @TableId(type = IdType.AUTO)
     private Integer id;
@@ -35,41 +34,19 @@ public class CourseAttachment implements Serializable {
     private Integer courseId;
 
     /**
+     * 章节名
+     */
+    private String name;
+
+    /**
      * 升序
      */
     private Integer sort;
 
-    /**
-     * 附件名
-     */
-    private String title;
-
-    /**
-     * 类型
-     */
-    private String type;
-
-    /**
-     * 资源 ID
-     */
-    private Integer rid;
-
-    /**
-     * 资源 URL
-     */
-    @TableField(exist = false)
-    private String url;
-
-    /**
-     * 资源类型
-     */
-    @TableField(exist = false)
-    private String ext;
-
-    /**
-     * 创建时间
-     */
-    @JsonIgnore
+    @JsonProperty("created_at")
     private Date createdAt;
+
+    @JsonProperty("updated_at")
+    private Date updatedAt;
 }
     
