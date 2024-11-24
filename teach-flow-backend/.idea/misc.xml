@@ -11,6 +11,7 @@
     </option>
     <option name="ignoredFiles">
       <set>
+        <option value="$PROJECT_DIR$/teach-flow-course/pom.xml" />
         <option value="$PROJECT_DIR$/teach-flow-interface/pom.xml" />
         <option value="$PROJECT_DIR$/teach-flow-resource/pom.xml" />
         <option value="$PROJECT_DIR$/teach-flow-search/pom.xml" />

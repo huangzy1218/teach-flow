@@ -10,7 +10,6 @@
     <packaging>pom</packaging>
     <modules>
         <module>teach-flow-common</module>
-        <module>teach-flow-course</module>
         <module>teach-flow-system</module>
         <module>teach-flow-gateway</module>
         <module>teach-flow-auth</module>
