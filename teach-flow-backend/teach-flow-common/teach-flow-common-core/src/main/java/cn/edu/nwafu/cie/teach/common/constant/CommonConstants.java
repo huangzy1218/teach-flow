@@ -17,5 +17,10 @@ public interface CommonConstants {
      * 失败标记
      */
     Integer FAIL = 1;
+
+    /**
+     * 请求开始时间
+     */
+    String REQUEST_START_TIME = "REQUEST-START-TIME";
 }
     
