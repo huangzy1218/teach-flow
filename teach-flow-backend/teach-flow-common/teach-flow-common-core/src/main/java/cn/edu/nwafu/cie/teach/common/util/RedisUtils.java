@@ -1,6 +1,6 @@
 package cn.edu.nwafu.cie.teach.common.util;
 
-import cn.edu.nwafu.cie.teach.common.constant.SystemConstants;
+import cn.edu.nwafu.cie.teach.common.constant.CommonConstants;
 import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.Cursor;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class RedisUtils {
     private static RedisTemplate<String, Object> redisTemplate;
-    private static final String redisPrefix = SystemConstants.REDIS_PREFIX;
+    private static final String redisPrefix = CommonConstants.REDIS_PREFIX;
 
     /**
      * 获取 key 的值
