@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>cn.nwafu</groupId>
-        <artifactId>teach-flow-backend</artifactId>
+        <artifactId>teach-flow-cms</artifactId>
         <version>${revision}</version>
     </parent>
 
