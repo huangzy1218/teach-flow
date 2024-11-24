@@ -16,6 +16,7 @@
         <dependency>
             <groupId>cn.nwafu</groupId>
             <artifactId>teach-flow-common-core</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 </project>

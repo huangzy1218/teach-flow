@@ -116,7 +116,7 @@
             <dependency>
                 <groupId>cn.nwafu</groupId>
                 <artifactId>teach-flow-common-bom</artifactId>
-                <version>${revision}</version>
+                <version>${project.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -298,18 +298,19 @@
         </profile>
     </profiles>
 
-    <repositories>
-        <repository>
-            <id>myRepository</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--    <repositories>-->
+    <!--        <repository>-->
+    <!--            <id>snapshots</id>-->
+    <!--            <url>-->
+    <!--                https://oss.sonatype.org/content/repositories/snapshots/-->
+    <!--            </url>-->
+    <!--        </repository>-->
+    <!--        <repository>-->
+    <!--            <id>release</id>-->
+    <!--            <url>-->
+    <!--                https://oss.sonatype.org/service/local/staging/deploy/maven2/-->
+    <!--            </url>-->
+    <!--        </repository>-->
+    <!--    </repositories>-->
 
 </project>

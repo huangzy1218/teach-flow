@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>teach-flow-cms</artifactId>
+    <packaging>pom</packaging>
     <modules>
         <module>teach-flow-cms-api</module>
         <module>teach-flow-cms-biz</module>
