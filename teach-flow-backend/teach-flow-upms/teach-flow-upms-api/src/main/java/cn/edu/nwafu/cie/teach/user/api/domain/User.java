@@ -125,5 +125,29 @@ public class User implements Serializable {
 
     @JsonProperty("updated_at")
     private Date updatedAt;
+
+    /**
+     * 微信 OpenId
+     */
+    @JsonProperty("wechat_open_id")
+    private String wechatOpenId;
+
+    /**
+     * 微信 UnionId（可选）
+     */
+    @JsonProperty("wechat_union_id")
+    private String wechatUnionId;
+
+    /**
+     * 微信昵称
+     */
+    @JsonProperty("wechat_nickname")
+    private String wechatNickname;
+
+    /**
+     * 微信头像
+     */
+    @JsonProperty("wechat_avatar")
+    private String wechatAvatar;
 }
     
