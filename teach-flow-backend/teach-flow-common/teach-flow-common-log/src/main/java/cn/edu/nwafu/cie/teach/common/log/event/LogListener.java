@@ -1,11 +1,17 @@
 package cn.edu.nwafu.cie.teach.common.log.event;
 
+import cn.edu.nwafu.cie.teach.common.constant.SecurityConstants;
+import cn.edu.nwafu.cie.teach.common.jackson.CustomJavaTimeModule;
+import cn.edu.nwafu.cie.teach.common.log.config.LogProperties;
+import cn.edu.nwafu.cie.teach.user.api.domain.SysLog;
+import cn.edu.nwafu.cie.teach.user.api.feign.RemoteLogService;
 import cn.hutool.core.util.StrUtil;
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.InitializingBean;
@@ -21,8 +27,9 @@ import java.util.Objects;
  * @author Huang Z.Y.
  * @create 2024-11-25 00:10
  */
+@RequiredArgsConstructor
 public class LogListener implements InitializingBean {
-    // new 一个 避免日志脱敏策略影响全局ObjectMapper
+    // new 一个 避免日志脱敏策略影响全局 ObjectMapper
     private final static ObjectMapper objectMapper = new ObjectMapper();
 
     private final RemoteLogService remoteLogService;
@@ -35,7 +42,7 @@ public class LogListener implements InitializingBean {
     @EventListener(LogEvent.class)
     public void saveSysLog(LogEvent event) {
         LogEventSource source = (LogEventSource) event.getSource();
-        LogEventSource sysLog = new LogEventSource();
+        SysLog sysLog = new SysLog();
         BeanUtils.copyProperties(source, sysLog);
 
         // json 格式刷参数放在异步中处理，提升性能
@@ -55,12 +62,11 @@ public class LogListener implements InitializingBean {
         FilterProvider filters = new SimpleFilterProvider().addFilter("filter properties by name",
                 SimpleBeanPropertyFilter.serializeAllExcept(ignorableFieldNames));
         objectMapper.setFilterProvider(filters);
-        objectMapper.registerModule(new PigJavaTimeModule());
+        objectMapper.registerModule(new CustomJavaTimeModule());
     }
 
     @JsonFilter("filter properties by name")
     class PropertyFilterMixIn {
-
     }
 }
     

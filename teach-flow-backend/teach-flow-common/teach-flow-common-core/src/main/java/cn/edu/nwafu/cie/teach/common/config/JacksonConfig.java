@@ -1,9 +1,9 @@
 package cn.edu.nwafu.cie.teach.common.config;
 
+import cn.edu.nwafu.cie.teach.common.jackson.CustomJavaTimeModule;
 import cn.hutool.core.date.DatePattern;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
@@ -34,7 +34,7 @@ public class JacksonConfig {
             builder.timeZone(TimeZone.getTimeZone(ZoneId.systemDefault()));
             builder.simpleDateFormat(DatePattern.NORM_DATETIME_PATTERN);
             builder.serializerByType(Long.class, ToStringSerializer.instance);
-            builder.modules(new JavaTimeModule());
+            builder.modules(new CustomJavaTimeModule());
         };
     }
 }

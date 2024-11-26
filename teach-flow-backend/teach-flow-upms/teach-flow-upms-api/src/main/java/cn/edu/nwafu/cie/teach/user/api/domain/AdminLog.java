@@ -1,4 +1,4 @@
-package cn.edu.nwafu.cie.teach.user.domain;
+package cn.edu.nwafu.cie.teach.user.api.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

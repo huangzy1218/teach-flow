@@ -1,4 +1,4 @@
-package cn.edu.nwafu.cie.teach.user.domain;
+package cn.edu.nwafu.cie.teach.user.api.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -12,48 +12,47 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * 管理权限。
+ * 学院。
  *
  * @author Huang Z.Y.
- * @create 2024-11-24 00:15
+ * @create 2024-11-24 00:37
  */
-@TableName(value = "admin_permission")
+@TableName(value = "department")
 @Data
-public class AdminPermission implements Serializable {
-    @TableField(exist = false)
+public class Department implements Serializable {
     @Serial
-    private static final long serialVersionUID = 5487504274950748562L;
+    @TableField(exist = false)
+    private static final long serialVersionUID = -6651105817842882083L;
 
     @TableId(type = IdType.AUTO)
     private Integer id;
 
     /**
-     * 类型[行为:action,数据:data]
+     * 部门名
      */
-    private String type;
+    private String name;
 
     /**
-     * 分组
+     * 父id
      */
-    @JsonProperty("group_name")
-    private String groupName;
+    @JsonProperty("parent_id")
+    private Integer parentId;
+
+    /**
+     * 父链
+     */
+    @JsonProperty("parent_chain")
+    private String parentChain;
 
     /**
      * 升序
      */
     private Integer sort;
 
-    /**
-     * 权限名
-     */
-    private String name;
-
-    /**
-     * slug
-     */
-    private String slug;
-
     @JsonProperty("created_at")
     private Date createdAt;
+
+    @JsonProperty("updated_at")
+    private Date updatedAt;
 }
     
