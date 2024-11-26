@@ -15,6 +15,7 @@
         <module>teach-flow-common-bom</module>
         <module>teach-flow-common-core</module>
         <module>teach-flow-common-log</module>
+        <module>teach-flow-common-oss</module>
     </modules>
     <dependencies>
         <dependency>
