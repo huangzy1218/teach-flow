@@ -11,4 +11,10 @@
 
     <artifactId>teach-flow-upms-biz</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>cn.nwafu</groupId>
+            <artifactId>teach-flow-common-log</artifactId>
+        </dependency>
+    </dependencies>
 </project>

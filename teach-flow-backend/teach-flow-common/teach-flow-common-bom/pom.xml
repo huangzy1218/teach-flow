@@ -48,6 +48,11 @@
                 <version>${revision}</version>
             </dependency>
             <dependency>
+                <groupId>cn.nwafu</groupId>
+                <artifactId>teach-flow-common-log</artifactId>
+                <version>${revision}</version>
+            </dependency>
+            <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-core</artifactId>
                 <version>${hutool.version}</version>

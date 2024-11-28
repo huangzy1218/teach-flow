@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @Accessors(chain = true)
-public class R<T> implements Serializable {
+public class R implements Serializable {
     @Serial
     private static final long serialVersionUID = -3446787679926414622L;
 
@@ -31,38 +31,38 @@ public class R<T> implements Serializable {
 
     @Getter
     @Setter
-    private T data;
+    private Object data;
 
-    public static <T> R<T> success() {
+    public static R success() {
         return restResult(null, CommonConstants.SUCCESS, null);
     }
 
-    public static <T> R<T> success(T data) {
+    public static R success(Object data) {
         return restResult(data, CommonConstants.SUCCESS, null);
     }
 
-    public static <T> R<T> success(T data, String msg) {
+    public static R success(Object data, String msg) {
         return restResult(data, CommonConstants.SUCCESS, msg);
     }
 
-    public static <T> R<T> failed() {
+    public static R failed() {
         return restResult(null, CommonConstants.FAIL, null);
     }
 
-    public static <T> R<T> failed(String msg) {
+    public static R failed(String msg) {
         return restResult(null, CommonConstants.FAIL, msg);
     }
 
-    public static <T> R<T> failed(T data) {
+    public static R failed(Object data) {
         return restResult(data, CommonConstants.FAIL, null);
     }
 
-    public static <T> R<T> failed(T data, String msg) {
+    public static R failed(Object data, String msg) {
         return restResult(data, CommonConstants.FAIL, msg);
     }
 
-    public static <T> R<T> restResult(T data, int code, String msg) {
-        R<T> apiResult = new R<>();
+    public static R restResult(Object data, int code, String msg) {
+        R apiResult = new R();
         apiResult.setCode(code);
         apiResult.setData(data);
         apiResult.setMsg(msg);
