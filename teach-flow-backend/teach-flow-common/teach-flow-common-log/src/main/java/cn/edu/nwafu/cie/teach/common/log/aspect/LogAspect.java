@@ -1,6 +1,7 @@
 package cn.edu.nwafu.cie.teach.common.log.aspect;
 
 import cn.edu.nwafu.cie.teach.common.log.annotation.Log;
+import cn.edu.nwafu.cie.teach.common.log.event.LogEventSource;
 import cn.edu.nwafu.cie.teach.common.log.util.LogTypeEnum;
 import cn.hutool.core.util.StrUtil;
 import lombok.RequiredArgsConstructor;
@@ -35,14 +36,14 @@ public class LogAspect {
             MethodSignature signature = (MethodSignature) point.getSignature();
             EvaluationContext context = LogUtils.getContext(point.getArgs(), signature.getMethod());
             try {
-                value = SysLogUtils.getValue(context, expression, String.class);
+                value = LogUtils.getValue(context, expression, String.class);
             } catch (Exception e) {
                 // SPEL 表达式异常，获取 value 的值
                 log.error("@SysLog 解析SPEL {} 异常", expression);
             }
         }
 
-        SysLogEventSource logVo = SysLogUtils.getSysLog();
+        LogEventSource logVo = LogUtils.getSysLog();
         logVo.setTitle(value);
         // 获取请求body参数
         if (StrUtil.isBlank(logVo.getParams())) {
