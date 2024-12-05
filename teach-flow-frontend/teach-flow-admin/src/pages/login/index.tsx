@@ -90,15 +90,15 @@ const LoginPage = () => {
           <img className={styles["icon"]} src={icon} alt="" />
         </div>
         <div className={styles["right-box"]}>
-          <div className={styles["title"]}>教学资源后台管理系统</div>
+          <div className={styles["title"]}>教师登录</div>
           <div className="login-box d-flex mt-50">
             <Input
               value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
-              style={{ width: 350, height: 44 }}
-              placeholder="请输入管理员邮箱账号"
+              style={{ width: 350, height: 40 }}
+              placeholder="请输入教师账号"
               allowClear
               onKeyUp={(e) => keyUp(e)}
             />
@@ -110,14 +110,14 @@ const LoginPage = () => {
                 setPassword(e.target.value);
               }}
               allowClear
-              style={{ width: 350, height: 44 }}
+              style={{ width: 350, height: 40 }}
               placeholder="请输入密码"
               onKeyUp={(e) => keyUp(e)}
             />
           </div>
           <div className="login-box d-flex mt-50">
             <Button
-              style={{ width: 350, height: 44 }}
+              style={{ width: 350, height: 40 }}
               type="primary"
               onClick={loginSubmit}
               loading={loading}
