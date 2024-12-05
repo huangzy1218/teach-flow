@@ -3,9 +3,9 @@ package cn.edu.nwafu.cie.teach.user.controller;
 import cn.edu.nwafu.cie.teach.common.log.annotation.Log;
 import cn.edu.nwafu.cie.teach.common.util.R;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
 
 /**
  * 管理员日志控制器。
@@ -19,6 +19,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminLogController {
     @Log("管理员日志-列表")
     @GetMapping("/index")
-    public R detail()
+    public R index(@RequestParam HashMap<String, Object> params) {
+        return R.success();
+    }
+
+    @Log("管理员日志-详情")
+    @GetMapping("/detail/{id}")
+    public R detail(@PathVariable(name = "id") Integer id) {
+        return R.success();
+    }
 }
     
