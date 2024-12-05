@@ -1,33 +1,22 @@
-# teach-flow-admin
+<p align="center">
+<img src="https://playedu.xyz/images/index/logo-big.png?v=2023032901" width="150"/>
+</p>
 
-This template should help get you started developing with Vue 3 in Vite.
+<h1 align="center">后台界面程序 - PlayEdu开源培训系统</h1>
+<p align="center">一款开源的培训系统，您可以使用它快速搭建私有化内部培训平台</p>
 
-## Recommended IDE Setup
+### 常用链接
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
++ [官网](https://playedu.xyz)
++ [快速上手](https://playedu.xyz/docs/docs/category/%E5%90%8E%E5%8F%B0%E7%95%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E5%AE%89%E8%A3%85)
 
-## Type Support for `.vue` Imports in TS
+### 开发团队
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+杭州白书科技有限公司
 
-## Customize configuration
+### 使用协议
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+欢迎使用杭州白书科技有限公司提供的开源培训解决方案！请您仔细阅读以下条款。通过使用 PlayEdu ，您表示同意接受以下所有条款。
 
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
++ 本开源项目中所有代码基于 Apache-2.0 许可协议，您默认遵守许可协议中约定的义务。
++ 您默认授权我们将您使用 PlayEdu 所在业务的 Logo 放置在本官网展示。

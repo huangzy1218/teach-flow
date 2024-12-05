@@ -1,20 +1,17 @@
-import { fileURLToPath, URL } from 'node:url'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+import gzipPlugin from "rollup-plugin-gzip";
 
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
-import vueDevTools from 'vite-plugin-vue-devtools'
-
-// https://vite.dev/config/
+// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    vueDevTools(),
-  ],
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
+  server: {
+    host: "0.0.0.0",
+    port: 3000,
+  },
+  plugins: [react()],
+  build: {
+    rollupOptions: {
+      plugins: [gzipPlugin()],
     },
   },
-})
+});
