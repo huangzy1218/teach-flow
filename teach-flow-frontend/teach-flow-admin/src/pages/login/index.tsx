@@ -9,10 +9,12 @@ import banner from "../../assets/images/login/banner.png";
 import icon from "../../assets/images/login/icon.svg";
 import "./login.less";
 import { loginAction } from "../../store/user/loginUserSlice";
+import { UserOutlined } from '@ant-design/icons';
 import {
   SystemConfigStoreInterface,
   saveConfigAction,
 } from "../../store/system/systemConfigSlice";
+import { KeyOutlined } from '@ant-design/icons';
 import { Footer } from "../../compenents/footer";
 
 const LoginPage = () => {
@@ -44,7 +46,6 @@ const LoginPage = () => {
       // setToken(res.data.token); //将token写入本地
       // await getSystemConfig(); //获取系统配置并写入store
       // await getUser(); //获取登录用户的信息并写入store
-
       navigate("/", { replace: true });
     } catch (e) {
       console.error("错误信息", e);
@@ -93,31 +94,29 @@ const LoginPage = () => {
           <div className={styles["title"]}>教师登录</div>
           <div className="login-box d-flex mt-50">
             <Input
-              value={email}
-              onChange={(e) => {
-                setEmail(e.target.value);
-              }}
-              style={{ width: 350, height: 40 }}
-              placeholder="请输入教师账号"
-              allowClear
-              onKeyUp={(e) => keyUp(e)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                style={{ width: 320, height: 40 }}
+                placeholder="请输入教师账号"
+                allowClear
+                onKeyUp={(e) => keyUp(e)}
+                prefix={<UserOutlined />}  // Add the user icon here
             />
           </div>
-          <div className="login-box d-flex mt-50">
+          <div className="login-box d-flex mt-30">
             <Input.Password
-              value={password}
-              onChange={(e) => {
-                setPassword(e.target.value);
-              }}
-              allowClear
-              style={{ width: 350, height: 40 }}
-              placeholder="请输入密码"
-              onKeyUp={(e) => keyUp(e)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                allowClear
+                style={{ width: 320, height: 40 }}
+                placeholder="请输入密码"
+                onKeyUp={(e) => keyUp(e)}
+                prefix={<KeyOutlined />}  // Add the key icon here
             />
           </div>
-          <div className="login-box d-flex mt-50">
+          <div className="login-box d-flex mt-40">
             <Button
-              style={{ width: 350, height: 40 }}
+              style={{ width: 320, height: 40 }}
               type="primary"
               onClick={loginSubmit}
               loading={loading}

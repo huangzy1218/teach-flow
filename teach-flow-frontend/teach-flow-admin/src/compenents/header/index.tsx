@@ -49,14 +49,14 @@ export const Header: React.FC = () => {
       <div className={styles["main-header"]}>
         <div></div>
         <Button.Group className={styles["button-group"]}>
-          <Dropdown menu={{ items, onClick }} placement="bottomRight">
-            <div className="d-flex">
-              {user.name && (
-                <img style={{ width: 30, height: 30 }} src={avatar} />
-              )}
-              <span className="ml-8 c-admin">{user.name}</span>
-            </div>
-          </Dropdown>
+          {/*<Dropdown menu={{ items, onClick }} placement="bottomRight">*/}
+          {/*  <div className="d-flex">*/}
+          {/*    {user.name && (*/}
+          {/*      <img style={{ width: 30, height: 30 }} src={avatar} />*/}
+          {/*    )}*/}
+          {/*    <span className="ml-8 c-admin">{user.name}</span>*/}
+          {/*  </div>*/}
+          {/*</Dropdown>*/}
         </Button.Group>
       </div>
     </div>

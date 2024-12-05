@@ -6,7 +6,6 @@ import { getToken } from "../utils";
 import KeepAlive from "../compenents/keep-alive";
 // 页面加载
 import InitPage from "../pages/init";
-import LoginPage from "../pages/login";
 import WithHeaderWithoutFooter from "../pages/layouts/with-header-without-footer";
 import WithoutHeaderWithoutFooter from "../pages/layouts/without-header-without-footer";
 
@@ -49,7 +48,8 @@ const ErrorPage = lazy(() => import("../pages/error"));
 
 import PrivateRoute from "../compenents/private-route";
 
-// const LoginPage = lazy(() => import("../pages/login"));
+const LoginPage = lazy(() => import("../pages/login"));
+
 
 let RootPage: any = null;
 if (getToken()) {
