@@ -10,4 +10,19 @@
     </parent>
 
     <artifactId>teach-flow-rms-api</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.nwafu</groupId>
+            <artifactId>teach-flow-common-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.nwafu</groupId>
+            <artifactId>teach-flow-common-log</artifactId>
+        </dependency>
+    </dependencies>
 </project>

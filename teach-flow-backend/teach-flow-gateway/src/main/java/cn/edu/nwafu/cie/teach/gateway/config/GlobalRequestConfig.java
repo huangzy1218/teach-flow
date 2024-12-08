@@ -7,13 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 网关配置。
+ * 全局请求配置。
  *
  * @author Huang Z.Y.
- * @create 2024-11-25 22:12
+ * @create 2024-12-08 19:33
  */
-@Configuration(proxyBeanMethods = false)
-public class GatewayConfig {
+@Configuration
+public class GlobalRequestConfig {
     /**
      * 创建 Request 全局过滤器
      *

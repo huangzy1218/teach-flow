@@ -1,6 +1,6 @@
 package cn.edu.nwafu.cie.teach.gateway.handler;
 
-import cn.edu.nwafu.cie.teach.common.util.R;
+import cn.edu.nwafu.cie.teach.common.api.R;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;

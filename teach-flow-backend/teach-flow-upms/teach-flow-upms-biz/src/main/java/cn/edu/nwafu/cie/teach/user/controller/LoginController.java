@@ -1,7 +1,7 @@
 package cn.edu.nwafu.cie.teach.user.controller;
 
+import cn.edu.nwafu.cie.teach.common.api.R;
 import cn.edu.nwafu.cie.teach.common.log.annotation.Log;
-import cn.edu.nwafu.cie.teach.common.util.R;
 import cn.edu.nwafu.cie.teach.user.api.request.LoginRequest;
 import cn.edu.nwafu.cie.teach.user.api.request.PasswordChangeRequest;
 import org.springframework.validation.annotation.Validated;

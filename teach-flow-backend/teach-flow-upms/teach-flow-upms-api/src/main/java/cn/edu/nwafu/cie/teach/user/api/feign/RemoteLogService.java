@@ -1,8 +1,8 @@
 package cn.edu.nwafu.cie.teach.user.api.feign;
 
+import cn.edu.nwafu.cie.teach.common.api.R;
 import cn.edu.nwafu.cie.teach.common.constant.SecurityConstants;
 import cn.edu.nwafu.cie.teach.common.constant.ServiceNameConstants;
-import cn.edu.nwafu.cie.teach.common.util.R;
 import cn.edu.nwafu.cie.teach.user.api.domain.SysLog;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;

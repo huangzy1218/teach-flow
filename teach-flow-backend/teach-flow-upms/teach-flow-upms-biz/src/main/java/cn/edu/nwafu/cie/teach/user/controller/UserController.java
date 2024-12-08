@@ -1,7 +1,7 @@
 package cn.edu.nwafu.cie.teach.user.controller;
 
+import cn.edu.nwafu.cie.teach.common.api.R;
 import cn.edu.nwafu.cie.teach.common.log.annotation.Log;
-import cn.edu.nwafu.cie.teach.common.util.R;
 import cn.edu.nwafu.cie.teach.user.api.request.UserImportRequest;
 import cn.edu.nwafu.cie.teach.user.api.request.UserRequest;
 import lombok.SneakyThrows;
@@ -101,7 +101,7 @@ public class UserController {
 
     @DeleteMapping("/{id}/learn-course/{courseId}/hour/{hourId}")
     @SneakyThrows
-    @Log("学员-线上课课时学习记录删除")
+    @Log("学生-线上课课时学习记录删除")
     public R destroyUserHour(
             @PathVariable(name = "id") Integer id,
             @PathVariable(name = "courseId") Integer courseId,

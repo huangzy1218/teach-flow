@@ -10,4 +10,11 @@
     </parent>
 
     <artifactId>teach-flow-cms-biz</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>cn.nwafu</groupId>
+            <artifactId>teach-flow-cms-api</artifactId>
+        </dependency>
+    </dependencies>
 </project>
